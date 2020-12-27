@@ -5,7 +5,7 @@ from pathlib import Path
 
 TEST_MODULE_PATH = Path(os.path.realpath(__file__)).parent / 'tests'
 TEST_MODULE_IMPORT_PATH = 'tests'
-SPLITTER = re.compile(r'(PB|NJ)(\d*)')
+SPLITTER = re.compile(r'(\d*)')
 WHITELIST = []
 
 

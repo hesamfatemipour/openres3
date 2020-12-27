@@ -26,10 +26,11 @@ services:
     expose:
       - 27017
     volumes:
-      - /data/pandora/volumes/mongodb:/data/db
+      - ./volumes/mongodb:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: "openresty"
-      MONGO_INITDB_ROOT_PASSWORD: "123"
+      MONGO_INITDB_ROOT_PASSWORD: "test123"
+      MONGO_INITDB_DATABASE: "openres3"
     networks:
       server_network_net:
         ipv4_address: 10.0.1.8

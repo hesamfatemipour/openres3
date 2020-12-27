@@ -1,4 +1,3 @@
-import unittest
 from unittest import TestCase
 
 from middleware import validate_bucket_name_regex
