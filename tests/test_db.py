@@ -14,7 +14,7 @@ class TestValidateBucketName(TestCase):
         self.mongo.set_db_name(self.test_db_name)
         data = [{
             "user_id": 1,
-            "prefixes": ['test', 'arvan']
+            "prefixes": 'test'
         }]
         self.mongo.db.prefixes.insert_many(data)
 
@@ -31,7 +31,7 @@ class TestValidateBucketName(TestCase):
 
         # check data validity in mongo
         self.assertEqual(document['user_id'], 1)
-        self.assertEqual(document['prefixes'], ['test', 'arvan'])
+        self.assertEqual(document['prefixes'], 'test')
 
         # delete test data
         self.tear_down()

@@ -3,7 +3,9 @@ from http import HTTPStatus
 from db.mongo import MongoConnection
 import re
 
-bucket_name_regex = re.compile(r'^[A-Za-z]{1,1}[A-Za-z0-9]{3,7}$')
+# a rule to validate bucket names
+bucket_name_regex = re.compile(r'^[A-Za-z]{1,1}[A-Za-z0-9_]{3,12}$')
+
 app = Flask(__name__)
 
 
@@ -20,7 +22,7 @@ def validate_bucket_name_regex(bucket_name):
 def validate(bucket_name: str, user_id: int) -> bool:
     user_prefix = query_mongo(user_id=user_id)
     bucket_name_regex.fullmatch(bucket_name)
-    if bucket_name.startswith(user_prefix['prefix']) and validate_bucket_name_regex(bucket_name):
+    if bucket_name.startswith(user_prefix['prefixes']) and validate_bucket_name_regex(bucket_name):
         return True
     else:
         return False
