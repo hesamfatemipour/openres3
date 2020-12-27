@@ -8,7 +8,7 @@ services:
       - ./openresty/nignx.conf:/etc/nginx/nginx.conf
       - ./openresty/conf.d:/etc/nginx/conf.d
     expose:
-      - 80
+      - 8080
     networks:
       server_network_net:
         ipv4_address: 10.0.1.11
@@ -19,6 +19,20 @@ services:
       dockerfile: Dockerfile
     image: server
     command: "true"
+
+  mongodb:
+    image: mongo:4.0.2
+    restart: always
+    expose:
+      - 27017
+    volumes:
+      - /data/pandora/volumes/mongodb:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "openresty"
+      MONGO_INITDB_ROOT_PASSWORD: "123"
+    networks:
+      server_network_net:
+        ipv4_address: 10.0.1.8
 
 networks:
   server_network_net:

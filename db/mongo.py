@@ -11,7 +11,3 @@ class Mongo:
                            tz_aware=False,
                            connect=True)
 
-    @staticmethod
-    def get_users_valid_prefixes(user):
-        # query users saved prefixes
-        pass

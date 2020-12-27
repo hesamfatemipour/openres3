@@ -8,4 +8,4 @@ RUN apt update -y && apt install python3-pip -y
 
 RUN pip3 install -r ./requirements.pip
 
-CMD [ "python3", "./middleware/middleware.py" ]
+CMD [ "python3", "./middleware/middleware.py"]
