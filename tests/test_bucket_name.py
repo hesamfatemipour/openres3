@@ -43,7 +43,7 @@ class TestBucketNameCreation(TestCase):
         self.seed_data()
 
         bucket_name = 'test_gitlab'
-        can_create = validate(bucket_name=bucket_name, user_id=1)
+        can_create, cause = validate(bucket_name=bucket_name, user_id=1)
 
         self.assertEqual(can_create, True)
         self.tear_down()
