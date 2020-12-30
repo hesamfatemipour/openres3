@@ -21,6 +21,9 @@ services:
       dockerfile: Dockerfile
     image: server
     command: "true"
+    networks:
+      server_network_net:
+        ipv4_address: 10.0.1.12
 
   mongodb:
     image: mongo:4.0.2
