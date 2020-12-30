@@ -11,7 +11,7 @@ step two: python3 middleware.py
 
 - to run test:
 ```
-python3 -m unittest discover -s tests
+python3 -m unittest discover -vs tests
 ```
 
 - run with docker:

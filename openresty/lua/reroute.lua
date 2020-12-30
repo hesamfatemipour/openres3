@@ -4,4 +4,8 @@ function _M.greet(name)
     ngx.say("Greetings from ", name)
 end
 
+function _M.server(name)
+    ngx.say("Greetings from ", name)
+end
+
 return _M
