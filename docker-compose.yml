@@ -10,7 +10,6 @@ services:
       - ./openresty/lua:/usr/local/openresty/nginx/lua
     expose:
       - 8080
-#    command: cd /usr/local/openresty/nginx && nginx -p $PWD
     networks:
       server_network_net:
         ipv4_address: 10.0.1.11
@@ -20,7 +19,8 @@ services:
       context: .
       dockerfile: Dockerfile
     image: server
-    command: "true"
+    expose:
+      - 5000
     networks:
       server_network_net:
         ipv4_address: 10.0.1.12

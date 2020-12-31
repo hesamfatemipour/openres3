@@ -1,6 +1,6 @@
 import os
 
-DEBUG = True
+DEBUG = False
 
 # mongo
 MONGODB_URI = os.environ.get(

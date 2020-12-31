@@ -4,8 +4,10 @@ ADD . /middleware
 
 WORKDIR /middleware
 
-RUN apt update -y && apt install python3-pip -y
+RUN apt update -y && apt install build-essential python-dev python3-pip uwsgi uwsgi-python3 -y
 
 RUN pip3 install -r ./requirements.pip
 
-CMD [ "python3", "./middleware.py"]
+RUN chmod +x ./entrypoint
+
+ENTRYPOINT ["/entrypoint.sh", "uwsgi"]
