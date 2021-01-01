@@ -61,4 +61,3 @@ def validate_bucket_name(user_id):
 
 if __name__ == '__main__':
     app.run(threaded=True, host='0.0.0.0', debug=config.DEBUG)
-    print(app.url_map)

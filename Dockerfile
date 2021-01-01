@@ -1,13 +1,18 @@
 FROM ubuntu:20.04
 
-ADD . /middleware
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Europe/Berlin
+RUN apt update -y && apt install build-essential python-dev python3-pip uwsgi tzdata -y
 
-WORKDIR /middleware
+COPY ./requirements.pip ./requirements.pip
 
-RUN apt update -y && apt install build-essential python-dev python3-pip uwsgi uwsgi-python3 -y
+ADD . /openres3
+WORKDIR /openres3
 
-RUN pip3 install -r ./requirements.pip
+RUN pip3 install -r requirements.pip
 
-RUN chmod +x ./entrypoint
+copy . /openres3
 
-ENTRYPOINT ["/entrypoint.sh", "uwsgi"]
+RUN chmod +x ./entrypoint.sh
+
+ENTRYPOINT ["./entrypoint.sh", "uwsgi"]
