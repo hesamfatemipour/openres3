@@ -15,6 +15,9 @@ class TestValidateBucketName(TestCase):
         data = [{
             "user_id": 1,
             "prefixes": 'test'
+        }, {
+            "user_id": 2,
+            "prefixes": 'minio'
         }]
         self.mongo.db.prefixes.insert_many(data)
 

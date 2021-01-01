@@ -1,6 +1,10 @@
 ### OpenreS3
 
 #### will validate your bucket names
+it's an attempt to validate users requested bucket name a step before sending the request to
+the S3 service, uses openresty and lua to redirect requests to middleware and python and
+mongo_db to validate the name.
+
 
 - how to run:
 
@@ -21,5 +25,6 @@ python3 -m unittest discover -vs tests
 
 - run with docker:
 ```
+docker-compose -f docker-compose.yml build
 docker-compose -f docker-compose.yml up -d
 ```
