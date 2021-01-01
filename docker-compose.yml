@@ -1,0 +1,49 @@
+version: '3.7'
+
+services:
+  openresty:
+    image: openresty/openresty
+    container_name: openresty
+    restart: always
+    volumes:
+      - ./openresty/configurations/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+      - ./openresty/lua:/usr/local/openresty/nginx/lua
+    expose:
+      - 8080
+    networks:
+      server_network_net:
+        ipv4_address: 10.0.1.11
+
+  middleware:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: server
+    expose:
+      - 5000
+    networks:
+      server_network_net:
+        ipv4_address: 10.0.1.12
+
+  mongodb:
+    image: mongo:4.0.2
+    restart: always
+    expose:
+      - 27017
+    volumes:
+      - ./volumes/mongodb:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "openresty"
+      MONGO_INITDB_ROOT_PASSWORD: "test123"
+      MONGO_INITDB_DATABASE: "openres3"
+    networks:
+      server_network_net:
+        ipv4_address: 10.0.1.8
+
+networks:
+  server_network_net:
+    driver: bridge
+    name: server_network
+    ipam:
+      config:
+        - subnet: 10.0.1.0/24
