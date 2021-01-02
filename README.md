@@ -28,3 +28,6 @@ python3 -m unittest discover -vs tests
 docker-compose -f docker-compose.yml build
 docker-compose -f docker-compose.yml up -d
 ```
+
+TODO:
+- unittest for lua module with : http://olivinelabs.com/busted/
