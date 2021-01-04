@@ -30,4 +30,9 @@ docker-compose -f docker-compose.yml up -d
 ```
 
 TODO:
-- unittest for lua module with : http://olivinelabs.com/busted/
+- unittest for lua module with : http://olivinelabs.com/busted
+- after reviewing some libraries it's not recommended to use lua socket, it is more safe to use:
+https://github.com/openresty/lua-nginx-module/blob/master/README.markdown#ngxsockettcp
+  
+- define a prefix for lua module in openresty
+- log aggregation in nginx: https://github.com/mtourne/nginx_log_by_lua
